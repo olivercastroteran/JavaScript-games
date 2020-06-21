@@ -7,7 +7,7 @@
 body {
   color: #fff;
   font-family: sans-serif;
-  background-color: #325734;
+  background-color: #43886b;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -22,9 +22,8 @@ body {
 }
 
 .container h1 {
-  color: #fff;
+  color: #0a191e;
   margin-bottom: 5rem;
-  font-weight: 100;
   letter-spacing: 1px;
   font-size: 2.5rem;
 }
@@ -53,11 +52,11 @@ body {
 }
 
 .container ul a:hover {
-  color: #ffa600;
+  color: #0a191e;
   transform: scale(1.03);
 }
 
 .container ul a:hover svg {
-  fill: #ffa600;
+  fill: #0a191e;
   transform: scale(1.03);
 }
