@@ -2,7 +2,7 @@ const word = document.getElementById('word');
 const text = document.getElementById('text');
 const scoreEl = document.getElementById('score');
 const timeEl = document.getElementById('time');
-const endGameEl = document.getElementById('end-game');
+const endGameEl = document.getElementById('end-game-container');
 const settingsBtn = document.getElementById('settings-btn');
 const settings = document.getElementById('settings');
 const settingsForm = document.getElementById('settings-form');
@@ -20,7 +20,7 @@ const words = [
   'bad',
   'north',
   'street',
-  'higs',
+  'higgs',
   'gold',
   'silver',
   'drag',
@@ -42,6 +42,12 @@ let randomWord;
 let score = 0;
 let time = 10;
 
+// focus on text on start
+text.focus();
+
+// Start counting down
+const timeInterval = setInterval(updateTime, 1000);
+
 // Generate random word from array
 function getRandomWord() {
   return words[Math.floor(Math.random() * words.length)];
@@ -59,6 +65,33 @@ function updateScore() {
   scoreEl.innerHTML = score;
 }
 
+// Update time
+function updateTime() {
+  time--;
+  timeEl.innerHTML = time + 's';
+
+  if (time === 0) {
+    clearInterval(timeInterval);
+    // end game
+    gameOver();
+  }
+}
+
+// Game over - show end screen
+function gameOver() {
+  endGameEl.innerHTML = `
+    <h1>Time run out</h1>
+    <p>Your final score is: ${score}</p>
+    <button 
+      style="border: 1px solid #fff; padding: 10px 20px;" 
+      onclick="location.reload()">
+        Reload
+    </button>
+  `;
+
+  endGameEl.style.display = 'flex';
+}
+
 addWordToDOM();
 
 // Event listeners
@@ -69,7 +102,10 @@ text.addEventListener('input', (e) => {
     addWordToDOM();
     updateScore();
 
-    // clear
+    // clear field
     e.target.value = '';
+
+    time += 5;
+    updateTime();
   }
 });
