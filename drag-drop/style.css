@@ -82,6 +82,10 @@ body {
   cursor: pointer;
 }
 
+.check-btn:focus {
+  outline: none;
+}
+
 .check-btn:active {
   transform: scale(0.98);
 }
