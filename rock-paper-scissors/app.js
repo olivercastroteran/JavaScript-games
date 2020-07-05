@@ -19,6 +19,13 @@ const game = () => {
     const options = document.querySelectorAll('.options button');
     const playerHand = document.querySelector('.player-hand');
     const computerHand = document.querySelector('.computer-hand');
+    const hands = document.querySelectorAll('.hands img');
+
+    hands.forEach((hand) => {
+      hand.addEventListener('animationend', function () {
+        this.style.animation = '';
+      });
+    });
 
     // Computer Options
     const computerOptions = ['rock', 'paper', 'scissors'];
@@ -29,9 +36,23 @@ const game = () => {
         const computerNumber = Math.floor(Math.random() * 3);
         const computerChoice = computerOptions[computerNumber];
 
-        // Call compare hands/choices
-        console.log(`player: ${this.innerHTML}`, `computer: ${computerChoice}`);
-        compareHands(this.innerHTML, computerChoice);
+        setTimeout(() => {
+          // Call compare hands/choices
+          compareHands(this.textContent, computerChoice);
+
+          // Update Images
+          playerHand.src = `./assets/${this.textContent}.png`;
+          computerHand.src = `./assets/${computerChoice}.png`;
+
+          setTimeout(() => {
+            playerHand.src = `./assets/rock.png`;
+            computerHand.src = `./assets/rock.png`;
+          }, 1500);
+        }, 2000);
+
+        // Animations
+        playerHand.style.animation = 'shakePlayer 2s ease';
+        computerHand.style.animation = 'shakeComputer 2s ease';
       });
     });
   };
@@ -49,9 +70,13 @@ const game = () => {
     if (playerChoice === 'rock') {
       if (computerChoice === 'scissors') {
         winner.textContent = 'Player Wins';
+        pScore++;
+        updateScore();
         return;
       } else {
         winner.textContent = 'Compuer Wins';
+        cScore++;
+        updateScore();
         return;
       }
     }
@@ -60,9 +85,13 @@ const game = () => {
     if (playerChoice === 'paper') {
       if (computerChoice === 'scissors') {
         winner.textContent = 'Computer Wins';
+        cScore++;
+        updateScore();
         return;
       } else {
         winner.textContent = 'Player Wins';
+        pScore++;
+        updateScore();
         return;
       }
     }
@@ -71,12 +100,25 @@ const game = () => {
     if (playerChoice === 'scissors') {
       if (computerChoice === 'paper') {
         winner.textContent = 'Player Wins';
+        pScore++;
+        updateScore();
         return;
       } else {
         winner.textContent = 'Compuer Wins';
+        cScore++;
+        updateScore();
         return;
       }
     }
+  };
+
+  // Update Score
+  const updateScore = () => {
+    const playerScore = document.querySelector('.player-score p');
+    const computerScore = document.querySelector('.computer-score p');
+
+    playerScore.textContent = pScore;
+    computerScore.textContent = cScore;
   };
 
   // Call all the inner functions
