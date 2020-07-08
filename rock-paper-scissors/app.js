@@ -47,7 +47,7 @@ const game = () => {
           setTimeout(() => {
             playerHand.src = `./assets/rock.png`;
             computerHand.src = `./assets/rock.png`;
-          }, 1500);
+          }, 2000);
         }, 2000);
 
         // Animations
