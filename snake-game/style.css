@@ -22,11 +22,13 @@ body {
 }
 
 .snake {
-  background-color: #1f5f25;
+  background-color: #45964d;
+  border-radius: 7px;
   /* border: 0.25vmin solid #000; */
 }
 
 .food {
   background-color: #ecb829;
+  border-radius: 7px;
   /* border: 0.25vmin solid #000; */
 }
