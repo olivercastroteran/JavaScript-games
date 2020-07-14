@@ -35,7 +35,7 @@ button:hover {
 .grid {
   width: 200px;
   height: 400px;
-  background-color: #66aa8e;
+  background-color: #68b897;
   display: flex;
   flex-wrap: wrap;
 }
