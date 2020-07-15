@@ -46,3 +46,7 @@ button:hover {
   background-color: #feb221;
   border-radius: 2px;
 }
+
+.tetromino {
+  background-color: #476783;
+}
