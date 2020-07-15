@@ -57,12 +57,47 @@ document.addEventListener('DOMContentLoaded', () => {
   let current = theTetrominoes[random][currentRotation];
   // console.log(current);
 
-  // Draw the first rotation of the first tetromino
+  // Draw the tetromino
   function draw() {
     current.forEach((index) => {
       squares[currentPosition + index].classList.add('tetromino');
     });
   }
 
-  draw();
+  // Undraw the tetromino
+  function unDraw() {
+    current.forEach((index) => {
+      squares[currentPosition + index].classList.remove('tetromino');
+    });
+  }
+
+  // Moving tetromino down every second
+  timerId = setInterval(moveDown, 1000);
+
+  // move down function
+  function moveDown() {
+    unDraw();
+    currentPosition += width;
+    draw();
+    freeze();
+  }
+
+  // Freeze function
+  function freeze() {
+    if (
+      current.some((index) =>
+        squares[currentPosition + index + width].classList.contains('taken')
+      )
+    ) {
+      current.forEach((index) =>
+        squares[currentPosition + index].classList.add('taken')
+      );
+
+      // start a new tetromino falling
+      random = Math.floor(Math.random() * theTetrominoes.length);
+      current = theTetrominoes[random][currentRotation];
+      currentPosition = 4;
+      draw();
+    }
+  }
 });
