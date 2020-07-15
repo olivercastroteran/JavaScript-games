@@ -35,7 +35,7 @@ button:hover {
 .grid {
   width: 200px;
   height: 400px;
-  background-color: #23233f;
+  background-color: #66aa8e;
   display: flex;
   flex-wrap: wrap;
 }
@@ -43,10 +43,10 @@ button:hover {
 .grid div {
   height: 20px;
   width: 20px;
-  background-color: #feb221;
-  border-radius: 2px;
+  /* background-color: #feb221; */
+  border-radius: 5px;
 }
 
 .tetromino {
-  background-color: #476783;
+  background-color: #284763;
 }

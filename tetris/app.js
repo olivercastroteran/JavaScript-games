@@ -50,7 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   let currentPosition = 4;
-  let current = theTetrominoes[0][0];
+  let currentRotation = 0;
+
+  // Rondom tetromino selection
+  let random = Math.floor(Math.random() * theTetrominoes.length);
+  let current = theTetrominoes[random][currentRotation];
+  // console.log(current);
 
   // Draw the first rotation of the first tetromino
   function draw() {
@@ -58,4 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentPosition + index].classList.add('tetromino');
     });
   }
+
+  draw();
 });
