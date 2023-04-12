@@ -14,7 +14,6 @@ const words = [
   'oliver',
   'airplane',
   'ball',
-  'adriana',
   'pies',
   'juice',
   'bad',
